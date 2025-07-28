@@ -30,12 +30,12 @@ public:
 
     operator bool() const
     {
-        return m_value != 0;
+        return m_value != value::EXCLUDED;
     }
 
     bool operator!() const
     {
-        return m_value == 0;
+        return m_value == value::EXCLUDED;
     }
 
     bool operator==(Optional<value> value)
