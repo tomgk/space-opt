@@ -2,6 +2,20 @@
 
 #include<iostream>
 
+#include "optional.h"
+
+static_assert(sizeof(int) == sizeof(Optional<NonZero<int>>));
+
+Optional<NonZero<int>> get()
+{
+    Optional<NonZero<int>> a;
+    Optional<NonZero<int>> b;
+
+    int x = a < b;
+
+    return {x};
+}
+
 int main()
 {
     Optional<NonZero<int>> v(3);
