@@ -3,36 +3,41 @@
 
 #include<stdexcept>
 
-template<typename T>
-class NonZero
+template<typename T, T excluded>
+class ExcludeValue
 {
     T m_val;
 public:
-    NonZero(T val): m_val(val)
+    constexpr static T EXCLUDED = excluded;
+
+    ExcludeValue(T val): m_val(val)
     {
-        if(val == 0)
+        if(val == excluded)
             throw std::exception();
     }
 };
 
 template<typename T>
-class Optional;
+using NonZero = ExcludeValue<T, 0>;
 
 template<typename T>
-class Optional<NonZero<T>>
+class Optional;
+
+template<typename T, T excluded>
+class Optional<ExcludeValue<T, excluded>>
 {
     T m_value = 0;
 public:
     Optional() = default;
     Optional(T val): m_value(val)
     {
-        if(val == 0)
+        if(val == excluded)
             throw std::exception();
     }
 
     Optional& operator=(T val)
     {
-        if(val == 0)
+        if(val == excluded)
             throw std::exception();
 
         m_value = val;
@@ -49,7 +54,7 @@ public:
         return m_value == 0;
     }
 
-    bool operator==(Optional<NonZero<T>> value)
+    bool operator==(Optional<ExcludeValue<T, excluded>> value)
     {
         return m_value == value.m_value;
     }
