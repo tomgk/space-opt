@@ -3,6 +3,12 @@
 
 #include<stdexcept>
 
+class ExludedValueException : public std::invalid_argument
+{
+public:
+    ExludedValueException(const char *msg): std::invalid_argument(msg){}
+};
+
 template<typename T, T excluded>
 class ExcludeValue
 {
@@ -13,7 +19,8 @@ public:
     ExcludeValue(T val): m_val(val)
     {
         if(val == excluded)
-            throw std::exception();
+            throw ExludedValueException("invalid value");
+    }
     }
 };
 

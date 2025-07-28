@@ -16,13 +16,13 @@ public:
     Optional(T val): m_value(val)
     {
         if(val == excluded)
-            throw std::exception();
+            throw ExludedValueException("invalid value");
     }
 
     Optional& operator=(T val)
     {
         if(val == excluded)
-            throw std::exception();
+            throw ExludedValueException("invalid value");
 
         m_value = val;
         return *this;
