@@ -50,7 +50,7 @@ public:
             callback(NonZero(m_value));
     }
 
-    value get()
+    value operator*() const
     {
         checkNonNull(m_value, "value absent");
         return m_value;
