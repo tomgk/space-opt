@@ -7,4 +7,5 @@ add_executable(space-opt
     nonzero.cpp
     excludevalue.h excludevalue.cpp
     optional.h optional.cpp
+    nonnullptr.h nonnullptr.cpp
 )
