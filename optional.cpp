@@ -8,3 +8,14 @@ static_assert(sizeof(int) == sizeof(Optional<ExcludeValue<int, -1>>));
 static_assert(sizeof(int) == sizeof(Optional<NonZero<int>>));
 
 static_assert(sizeof(int*) == sizeof(Optional<NonNullPtr<int>>));
+
+const char *EMPTY_STRING_VIEW()
+{
+    static const char *DATA = "5e8f801b-e83b-4d8c-ad57-cae0197d6670";
+    return DATA;
+}
+
+static void useOptionalStringView()
+{
+    Optional<std::string_view> a;
+}
