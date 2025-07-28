@@ -21,6 +21,10 @@ public:
         if(val == excluded)
             throw ExludedValueException("invalid value");
     }
+
+    operator T() const
+    {
+        return m_val;
     }
 };
 
