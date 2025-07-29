@@ -16,13 +16,13 @@ public:
     Optional(T val): m_value(val)
     {
         if(val == excluded)
-            throw ExludedValueException("invalid value");
+            throw ExludedValueException(val);
     }
 
     Optional& operator=(T val)
     {
         if(val == excluded)
-            throw ExludedValueException("invalid value");
+            throw ExludedValueException(val);
 
         m_value = val;
         return *this;
@@ -52,7 +52,9 @@ public:
 
     value operator*() const
     {
-        checkNonNull(m_value, "value absent");
+        if(m_value == value::EXCLUDED)
+            throw std::runtime_error("value absent");
+
         return m_value;
     }
 };
@@ -63,14 +65,18 @@ template<>
 class Optional<std::string_view>
 {
     std::string_view m_value;
-    bool isEmpty() const
-    {
-        return m_value.data() == EMPTY_STRING_VIEW();
-    }
 public:
     Optional(): m_value(EMPTY_STRING_VIEW()){}
     Optional(std::string_view value): m_value(value){}
 
+private:
+    bool isEmpty() const
+    {
+        //use an address with a special meaning to mark it as empty
+        return m_value.data() == EMPTY_STRING_VIEW();
+    }
+
+public:
     operator bool() const
     {
         return !isEmpty();
