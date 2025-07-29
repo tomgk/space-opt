@@ -99,7 +99,7 @@ public:
     template<typename C>
     void ifPresent(C callback)
     {
-        if(isEmpty())
+        if(!isEmpty())
             callback(m_value);
     }
 
