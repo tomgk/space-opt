@@ -4,6 +4,8 @@
 
 #include "optional.h"
 
+#include "digitstring.h"
+
 static_assert(sizeof(int) == sizeof(Optional<NonZero<int>>));
 
 Optional<NonZero<int>> get()
@@ -18,6 +20,8 @@ Optional<NonZero<int>> get()
 
 int main()
 {
+    DigitString d("123");
+
     Optional<NonZero<int>> v(3);
 
     std::cout << v << std::endl;
