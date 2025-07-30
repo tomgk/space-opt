@@ -10,4 +10,5 @@ add_executable(space-opt
     nonnullptr.h nonnullptr.cpp
     numberstring.h numberstring.cpp
     nibblestring.h nibblestring.cpp
+    numberstring_main.cpp
 )
