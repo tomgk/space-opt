@@ -11,6 +11,12 @@ int parseDigit(const char *str, size_t index)
     return ch - '0';
 }
 
+char toDigit(int value)
+{
+    return value + '0';
+}
+
+
 #include<sstream>
 
 static void test(const char *str)

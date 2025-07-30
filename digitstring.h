@@ -7,6 +7,7 @@
 #include<iostream>
 
 int parseDigit(const char *str, size_t index);
+char toDigit(int value);
 
 class DigitString
 {
@@ -48,7 +49,7 @@ private:
         char val = m_values.at(v_index);
 
         int v = hi ? val >> 4 : val & 0xF;
-        return v + '0';
+        return toDigit(v);
     }
 public:
     char at(size_t index) const
