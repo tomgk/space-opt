@@ -51,3 +51,4 @@ char NumberCharset<N>::toDigit(int value)
 }
 
 template class NumberCharset<10>;
+template class NumberCharset<16>;
