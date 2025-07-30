@@ -7,39 +7,15 @@
 class DigitString
 {
     std::vector<char> m_values;
+    bool m_unevenCount;
 public:
     DigitString(const char *str);
-
 private:
-    char access(size_t v_index, bool offset) const
-    {
-        char val = m_values.at(v_index);
-
-        int v = offset ? val >> 4 : val & 0xF;
-        return v + '0';
-    }
+    char access(size_t v_index, bool hi) const;
 public:
-    char at(size_t index) const
-    {
-        size_t v_index = index/2;
-        bool offset = index % 2;
-        return access(v_index, offset);
-    }
-
-    size_t size() const
-    {
-        return m_values.size() * 2;
-    }
-
-    std::string str()
-    {
-        std::string str;
-
-        for(size_t i=0;i<size();++i)
-            str += at(i);
-
-        return str;
-    }
+    char at(size_t index) const;
+    size_t size() const;
+    std::string str();
 };
 
 #endif // DIGITSTRING_H

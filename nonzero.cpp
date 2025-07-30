@@ -18,10 +18,8 @@ Optional<NonZero<int>> get()
     return {x};
 }
 
-int main()
+int mainx()
 {
-    DigitString d("123");
-
     Optional<NonZero<int>> v(3);
 
     std::cout << v << std::endl;
