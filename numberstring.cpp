@@ -1,4 +1,4 @@
-#include "digitstring.h"
+#include "numberstring.h"
 
 #include<stdexcept>
 

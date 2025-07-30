@@ -1,5 +1,5 @@
-#ifndef DIGITSTRING_H
-#define DIGITSTRING_H
+#ifndef NUMBERSTRING_H
+#define NUMBERSTRING_H
 
 #include "nibblestring.h"
 
@@ -12,4 +12,4 @@ public:
 
 using DecimalString = NibbleString<DecimalCharset>;
 
-#endif // DIGITSTRING_H
+#endif // NUMBERSTRING_H
