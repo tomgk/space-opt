@@ -16,7 +16,9 @@ public:
     char at(size_t index) const;
     size_t size() const;
     std::string str() const;
+private:
     void write(std::ostream &out) const;
+    friend std::ostream& operator<<(std::ostream &os, const DigitString &str);
 };
 
 inline std::ostream& operator<<(std::ostream &os, const DigitString &str)
