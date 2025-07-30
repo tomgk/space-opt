@@ -14,7 +14,7 @@ static void test10(const char *str)
     std::cout << "valo: \"" << out.str() << "\"" << std::endl;
 }
 
-int main()
+void main10()
 {
     test10("123");
     std::cout << "------" << std::endl;
@@ -23,4 +23,9 @@ int main()
     test10("");
     std::cout << "------" << std::endl;
     test10("0");
+}
+
+int main()
+{
+    main10();
 }
