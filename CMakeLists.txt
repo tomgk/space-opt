@@ -9,4 +9,5 @@ add_executable(space-opt
     optional.h optional.cpp
     nonnullptr.h nonnullptr.cpp
     digitstring.h digitstring.cpp
+    nibblestring.h nibblestring.cpp
 )
