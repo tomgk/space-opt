@@ -2,7 +2,7 @@
 
 #include<stdexcept>
 
-int parseDigit(const char *str, size_t index)
+int DecimalCharset::parseDigit(const char *str, size_t index)
 {
     char ch = str[index];
     if(ch < '0' || ch >= '9')
@@ -11,7 +11,7 @@ int parseDigit(const char *str, size_t index)
     return ch - '0';
 }
 
-char toDigit(int value)
+char DecimalCharset::toDigit(int value)
 {
     return value + '0';
 }
@@ -21,7 +21,7 @@ char toDigit(int value)
 
 static void test(const char *str)
 {
-    DigitString d(str);
+    DigitString<DecimalCharset> d(str);
 
     std::cout << "INPUT: \"" << str << "\" (len = " << strlen(str) << ")" << std::endl;
     std::cout << "size: " << d.size() << std::endl;

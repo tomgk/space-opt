@@ -6,9 +6,14 @@
 #include<cstring>
 #include<iostream>
 
-int parseDigit(const char *str, size_t index);
-char toDigit(int value);
+class DecimalCharset
+{
+public:
+    static int parseDigit(const char *str, size_t index);
+    static char toDigit(int value);
+};
 
+template<typename Charset>
 class DigitString
 {
     std::vector<char> m_values;
@@ -23,8 +28,8 @@ public:
 
         for(size_t i = 0; i < cappedLen; i+=2)
         {
-            int n1 = parseDigit(str, i);
-            int n2 = parseDigit(str, i+1);
+            int n1 = Charset::parseDigit(str, i);
+            int n2 = Charset::parseDigit(str, i+1);
 
             int v = (n1 << 4) | n2;
             m_values.push_back(v);
@@ -35,7 +40,7 @@ public:
         {
             m_unevenCount = true;
 
-            int n1 = parseDigit(str, len-1);
+            int n1 = Charset::parseDigit(str, len-1);
 
             int v = (n1 << 4) | 0;
             m_values.push_back(v);
@@ -49,7 +54,7 @@ private:
         char val = m_values.at(v_index);
 
         int v = hi ? val >> 4 : val & 0xF;
-        return toDigit(v);
+        return Charset::toDigit(v);
     }
 public:
     char at(size_t index) const
@@ -75,7 +80,7 @@ public:
 
         return str;
     }
-private:
+//private:
     void write(std::ostream &out) const
     {
         size_t size = this->size();
@@ -84,10 +89,11 @@ private:
             out.put(at(i));
     }
 
-    friend std::ostream& operator<<(std::ostream &os, const DigitString &str);
+//    friend std::ostream& operator<<(std::ostream &os, const DigitString<Charset> &str);
 };
 
-inline std::ostream& operator<<(std::ostream &os, const DigitString &str)
+template<typename Charset>
+inline std::ostream& operator<<(std::ostream &os, const DigitString<Charset> &str)
 {
     os << str.str();
     return os;
