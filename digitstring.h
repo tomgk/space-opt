@@ -14,12 +14,12 @@ public:
 };
 
 template<typename Charset>
-class DigitString
+class NibbleString
 {
     std::vector<char> m_values;
     bool m_unevenCount;
 public:
-    DigitString(const char *str)
+    NibbleString(const char *str)
     {
         size_t len = strlen(str);
         m_values.reserve(len*2+len%2);
@@ -92,8 +92,10 @@ public:
 //    friend std::ostream& operator<<(std::ostream &os, const DigitString<Charset> &str);
 };
 
+using DecimalString = NibbleString<DecimalCharset>;
+
 template<typename Charset>
-inline std::ostream& operator<<(std::ostream &os, const DigitString<Charset> &str)
+inline std::ostream& operator<<(std::ostream &os, const NibbleString<Charset> &str)
 {
     os << str.str();
     return os;

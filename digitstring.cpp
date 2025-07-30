@@ -21,7 +21,7 @@ char DecimalCharset::toDigit(int value)
 
 static void test(const char *str)
 {
-    DigitString<DecimalCharset> d(str);
+    DecimalString d(str);
 
     std::cout << "INPUT: \"" << str << "\" (len = " << strlen(str) << ")" << std::endl;
     std::cout << "size: " << d.size() << std::endl;
