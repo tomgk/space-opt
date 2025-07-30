@@ -12,5 +12,6 @@ public:
 };
 
 using DecimalString = NibbleString<NumberCharset<10>>;
+using HexString = NibbleString<NumberCharset<16>>;
 
 #endif // NUMBERSTRING_H
