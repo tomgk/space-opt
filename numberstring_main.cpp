@@ -2,7 +2,7 @@
 
 #include<sstream>
 
-static void test(const char *str)
+static void test10(const char *str)
 {
     DecimalString d(str);
 
@@ -16,11 +16,11 @@ static void test(const char *str)
 
 int main()
 {
-    test("123");
+    test10("123");
     std::cout << "------" << std::endl;
-    test("123456");
+    test10("123456");
     std::cout << "------" << std::endl;
-    test("");
+    test10("");
     std::cout << "------" << std::endl;
-    test("0");
+    test10("0");
 }
