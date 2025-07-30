@@ -2,6 +2,7 @@
 
 #include<cstring>
 #include<stdexcept>
+#include<iostream>
 
 static int parseDigit(const char *str, size_t index)
 {
@@ -62,7 +63,7 @@ size_t DigitString::size() const
     return m_values.size() * 2 - (m_unevenCount ? 1 : 0);
 }
 
-std::string DigitString::str()
+std::string DigitString::str() const
 {
     std::string str;
     size_t size = this->size();
@@ -74,14 +75,27 @@ std::string DigitString::str()
     return str;
 }
 
+void DigitString::write(std::ostream &out) const
+{
+    size_t size = this->size();
+
+    for(size_t i=0;i<size;++i)
+        out.put(at(i));
+}
+
 #include<iostream>
+#include<sstream>
 
 static void test(const char *str)
 {
     DigitString d(str);
 
+    std::cout << "INPUT: \"" << str << "\" (len = " << strlen(str) << ")" << std::endl;
     std::cout << "size: " << d.size() << std::endl;
-    std::cout << "val:  " << d.str() << std::endl;
+    std::cout << "val:  \"" << d.str() << "\"" << std::endl;
+    std::stringstream out;
+    out << d;
+    std::cout << "valo: \"" << out.str() << "\"" << std::endl;
 }
 
 int main()
@@ -89,4 +103,8 @@ int main()
     test("123");
     std::cout << "------" << std::endl;
     test("123456");
+    std::cout << "------" << std::endl;
+    test("");
+    std::cout << "------" << std::endl;
+    test("0");
 }

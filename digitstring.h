@@ -15,7 +15,14 @@ private:
 public:
     char at(size_t index) const;
     size_t size() const;
-    std::string str();
+    std::string str() const;
+    void write(std::ostream &out) const;
 };
+
+inline std::ostream& operator<<(std::ostream &os, const DigitString &str)
+{
+    os << str.str();
+    return os;
+}
 
 #endif // DIGITSTRING_H
