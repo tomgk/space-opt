@@ -6,7 +6,19 @@
 #include<cstring>
 #include<iostream>
 
-template<typename Charset>
+template<typename T>
+concept Charset = requires(T a)
+{
+    requires requires (const char *str, size_t index) {
+        {T::getCharValue(str, index)} -> std::same_as<int>;
+    };
+
+    requires requires (int value) {
+        {T::toChar(value)} -> std::same_as<char>;
+    };
+};
+
+template<Charset Charset>
 class NibbleString
 {
     std::vector<char> m_values;
