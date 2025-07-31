@@ -46,7 +46,7 @@ char NumberCharset<N>::toDigit(int value)
         else if(value >= 10 && value < 26)
             return ALPHA_START + (value - 10);
         else
-            throw std::invalid_argument("invalid");
+            throw std::invalid_argument("invalid: "+std::to_string(value));
     }
 }
 
