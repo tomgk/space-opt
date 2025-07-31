@@ -8,8 +8,10 @@ add_executable(space-opt
     excludevalue.h excludevalue.cpp
     optional.h optional.cpp
     nonnullptr.h nonnullptr.cpp
-    numberstring.h numberstring.cpp
+
     nibblestring.h nibblestring.cpp
-    numberstring_main.cpp
     flexcharset.h flexcharset.cpp
+    numberstring.h numberstring.cpp
+
+    numberstring_main.cpp
 )
