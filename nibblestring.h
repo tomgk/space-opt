@@ -23,6 +23,16 @@ class NibbleString
 {
     std::vector<char> m_values;
     bool m_unevenCount;
+
+    static int to_hibit(int val)
+    {
+        return val << 4;
+    }
+
+    static int to_lobit(int val)
+    {
+        return val;
+    }
 public:
     NibbleString(const char *str)
     {
@@ -36,7 +46,7 @@ public:
             int n1 = Charset::getCharValue(str, i);
             int n2 = Charset::getCharValue(str, i+1);
 
-            int v = (n1 << 4) | n2;
+            int v = to_hibit(n1) | to_lobit(n2);
             m_values.push_back(v);
         }
 
@@ -47,7 +57,7 @@ public:
 
             int n1 = Charset::getCharValue(str, len-1);
 
-            int v = (n1 << 4) | 0;
+            int v = to_hibit(n1) | to_lobit(0);
             m_values.push_back(v);
         }
         else
