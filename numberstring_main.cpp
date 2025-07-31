@@ -68,9 +68,9 @@ void main16()
 
 void mainFlex()
 {
-    using F = NibbleString<FlexCharset<' ', 'd', 'e', 'h', 'l', 'o', 'r', 'w'>>;
+    using F = NibbleString<FlexCharset<' ', '!', 'd', 'e', 'h', 'l', 'o', 'r', 'w'>>;
 
-    testN<F>("hello world");
+    testN<F>("hello world!");
 }
 
 int main()
