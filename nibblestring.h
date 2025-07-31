@@ -47,6 +47,10 @@ private:
         char val = m_values.at(v_index);
 
         int v = (hi ? val >> 4 : val) & 0xF;
+
+        //std::cout << "[" << v_index << "/" << (hi ? "hi" : "lo") << "] ";
+        //std::cout << "= " << v << std::endl;
+
         return Charset::toDigit(v);
     }
 public:
