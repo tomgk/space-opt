@@ -4,13 +4,25 @@
 
 #include<sstream>
 
-#define ASSERT_EQ(a, b) assertEq(#a, #b, a, b)
+#define ASSERT_EQ(a, b) assertEq(__FILE__, __LINE__, #a, #b, a, b)
+
+namespace std
+{
+std::string to_string(const char *str)
+{
+    return str;
+}
+std::string to_string(std::string str)
+{
+    return str;
+}
+}
 
 template<typename A, typename B>
-static void assertEq(const char *varA, const char *varB, A a, B b)
+static void assertEq(const char *file, long line, const char *varA, const char *varB, A a, B b)
 {
     if(a != b)
-        throw std::invalid_argument("different");
+        throw std::invalid_argument("file:///"+std::string(file)+":"+std::to_string(line)+" - expected "+std::to_string(a)+" but got "+std::to_string(b));
 }
 
 template<typename T>
@@ -73,6 +85,29 @@ void mainFlex()
     testN<F>("hello world!");
 }
 
+void NibbleStringAdd()
+{
+    DecimalString a("");
+    ASSERT_EQ("", a.str());
+    ASSERT_EQ(false, a.isUnevenCount());
+
+    a += '1';
+    ASSERT_EQ(true, a.isUnevenCount());
+    ASSERT_EQ("1", a.str());
+
+    a += '2';
+    ASSERT_EQ("12", a.str());
+
+    a += '3';
+    ASSERT_EQ("123", a.str());
+
+    a += '4';
+    ASSERT_EQ("1234", a.str());
+
+    a += '5';
+    ASSERT_EQ("12345", a.str());
+}
+
 int main()
 {
     main10();
@@ -80,4 +115,6 @@ int main()
     main16();
     std::cout << "------" << std::endl;
     mainFlex();
+    std::cout << "------" << std::endl;
+    NibbleStringAdd();
 }

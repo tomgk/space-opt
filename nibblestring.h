@@ -24,16 +24,29 @@ class NibbleString
     std::vector<char> m_values;
     bool m_unevenCount;
 
+    static void checkVal(int val)
+    {
+        if(val < 0 || val > 16)
+            throw std::invalid_argument("out of bounds");
+    }
+
     static int to_hibit(int val)
     {
+        checkVal(val);
         return val << 4;
     }
 
     static int to_lobit(int val)
     {
+        checkVal(val);
         return val;
     }
 public:
+    bool isUnevenCount() const
+    {
+        return m_unevenCount;
+    }
+
     NibbleString(const char *str)
     {
         size_t len = strlen(str);
@@ -63,6 +76,45 @@ public:
         else
             m_unevenCount = false;
     }
+
+    void add(char c)
+    {
+        char arr[]{c, '\0'};
+        int val = Charset::getCharValue(arr, 0);
+
+        if(m_values.empty())
+        {
+            std::cout << "ADD: start new string" << std::endl;
+            m_values.push_back(to_hibit(val));
+            m_unevenCount = true;
+            return;
+        }
+
+        //uneven -> last nibble is still unfilled
+        if(m_unevenCount)
+        {
+            std::cout << "ADD: add to uneven" << std::endl;
+            m_values.back() |= to_lobit(val);
+            //mark it as filled
+            m_unevenCount = false;
+        }
+        //even -> need a new byte
+        else
+        {
+            std::cout << "ADD: add new char" << std::endl;
+            //since we start a new byte, it is the high val
+            m_values.push_back(to_hibit(val));
+            //and since the lobit isn't used yet, mark it as such
+            m_unevenCount = true;
+        }
+    }
+
+    NibbleString operator+=(char c)
+    {
+        add(c);
+        return *this;
+    }
+
 private:
     char access(size_t v_index, bool hi) const
     {
