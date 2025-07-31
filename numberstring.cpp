@@ -43,8 +43,8 @@ char NumberCharset<N>::toDigit(int value)
     {
         if(value < 10)
             return value + '0';
-        else if(value < 10+ALPHA_LEN)
-            return ALPHA_START + value;
+        else if(value >= 10 && value < 26)
+            return ALPHA_START + (value - 10);
         else
             throw std::invalid_argument("invalid");
     }
