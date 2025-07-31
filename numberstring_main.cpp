@@ -2,9 +2,10 @@
 
 #include<sstream>
 
-static void test10(const char *str)
+template<typename T>
+static void testN(const char *str)
 {
-    DecimalString d(str);
+    T d(str);
 
     std::cout << "INPUT: \"" << str << "\" (len = " << strlen(str) << ")" << std::endl;
     std::cout << "size: " << d.size() << std::endl;
@@ -12,6 +13,11 @@ static void test10(const char *str)
     std::stringstream out;
     out << d;
     std::cout << "valo: \"" << out.str() << "\"" << std::endl;
+}
+
+static void test10(const char *str)
+{
+    testN<DecimalString>(str);
 }
 
 void main10()
@@ -27,14 +33,7 @@ void main10()
 
 static void test16(const char *str)
 {
-    HexString d(str);
-
-    std::cout << "INPUT: \"" << str << "\" (len = " << strlen(str) << ")" << std::endl;
-    std::cout << "size: " << d.size() << std::endl;
-    std::cout << "val:  \"" << d.str() << "\"" << std::endl;
-    std::stringstream out;
-    out << d;
-    std::cout << "valo: \"" << out.str() << "\"" << std::endl;
+    testN<HexString>(str);
 }
 
 void main16()
