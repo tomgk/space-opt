@@ -11,4 +11,5 @@ add_executable(space-opt
     numberstring.h numberstring.cpp
     nibblestring.h nibblestring.cpp
     numberstring_main.cpp
+    flexcharset.h flexcharset.cpp
 )

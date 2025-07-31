@@ -1,5 +1,7 @@
 #include "numberstring.h"
 
+#include "flexcharset.h"
+
 #include<sstream>
 
 #define ASSERT_EQ(a, b) assertEq(#a, #b, a, b)
@@ -64,9 +66,18 @@ void main16()
     test16("0");
 }
 
+void mainFlex()
+{
+    using F = NibbleString<FlexCharset<' ', 'd', 'e', 'h', 'l', 'o', 'r', 'w'>>;
+
+    testN<F>("hello world");
+}
+
 int main()
 {
     main10();
     std::cout << "------" << std::endl;
     main16();
+    std::cout << "------" << std::endl;
+    mainFlex();
 }
