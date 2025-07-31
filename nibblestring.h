@@ -46,7 +46,7 @@ private:
     {
         char val = m_values.at(v_index);
 
-        int v = hi ? val >> 4 : val & 0xF;
+        int v = (hi ? val >> 4 : val) & 0xF;
         return Charset::toDigit(v);
     }
 public:
