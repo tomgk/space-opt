@@ -39,13 +39,18 @@ static void test16(const char *str)
 
 void main16()
 {
-    test16("123");
+    test16("12ABCDEF");
+    if(0)
+    {
+    test16("ACE");
+    test16("1A2C3E");
     std::cout << "------" << std::endl;
     test16("123456");
     std::cout << "------" << std::endl;
     test16("");
     std::cout << "------" << std::endl;
     test16("0");
+    }
 }
 
 int main()
