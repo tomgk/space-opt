@@ -7,8 +7,8 @@ template<size_t N>
 class NumberCharset
 {
 public:
-    static int parseDigit(const char *str, size_t index);
-    static char toDigit(int value);
+    static int getCharValue(const char *str, size_t index);
+    static char toChar(int value);
 };
 
 using DecimalString = NibbleString<NumberCharset<10>>;

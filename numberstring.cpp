@@ -13,7 +13,7 @@ static std::invalid_argument raiseInvalid(const char *str, size_t index)
 }
 
 template<size_t N>
-int NumberCharset<N>::parseDigit(const char *str, size_t index)
+int NumberCharset<N>::getCharValue(const char *str, size_t index)
 {
     char ch = str[index];
     if(N <= 10)
@@ -35,7 +35,7 @@ int NumberCharset<N>::parseDigit(const char *str, size_t index)
 }
 
 template<size_t N>
-char NumberCharset<N>::toDigit(int value)
+char NumberCharset<N>::toChar(int value)
 {
     if(N <= 10)
         return value + '0';

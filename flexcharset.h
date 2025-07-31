@@ -12,7 +12,7 @@ class FlexCharset
     static_assert(COUNT > 2);
     static_assert(COUNT <= 16);
 public:
-    static int parseDigit(const char *str, size_t index)
+    static int getCharValue(const char *str, size_t index)
     {
         char c = str[index];
 
@@ -23,7 +23,7 @@ public:
         return iter - std::begin(VALUES);
     }
 
-    static char toDigit(int value)
+    static char toChar(int value)
     {
         if(value >= COUNT)
             throw std::invalid_argument("too hight: "+std::to_string(value));

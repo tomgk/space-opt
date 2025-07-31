@@ -27,4 +27,6 @@ int mainx()
     v = 0;
 
     std::cout << v << std::endl;
+
+    return 0;
 }

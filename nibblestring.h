@@ -21,8 +21,8 @@ public:
 
         for(size_t i = 0; i < cappedLen; i+=2)
         {
-            int n1 = Charset::parseDigit(str, i);
-            int n2 = Charset::parseDigit(str, i+1);
+            int n1 = Charset::getCharValue(str, i);
+            int n2 = Charset::getCharValue(str, i+1);
 
             int v = (n1 << 4) | n2;
             m_values.push_back(v);
@@ -33,7 +33,7 @@ public:
         {
             m_unevenCount = true;
 
-            int n1 = Charset::parseDigit(str, len-1);
+            int n1 = Charset::getCharValue(str, len-1);
 
             int v = (n1 << 4) | 0;
             m_values.push_back(v);
@@ -51,7 +51,7 @@ private:
         //std::cout << "[" << v_index << "/" << (hi ? "hi" : "lo") << "] ";
         //std::cout << "= " << v << std::endl;
 
-        return Charset::toDigit(v);
+        return Charset::toChar(v);
     }
 public:
     char at(size_t index) const
