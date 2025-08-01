@@ -121,6 +121,11 @@ public:
         m_values.reserve(size / 2 + size % 2);
     }
 
+    size_t capacity()
+    {
+        return m_values.capacity();
+    }
+
 private:
     char access(size_t v_index, bool hi) const
     {

@@ -77,6 +77,13 @@ public:
         m_digits.reserve(size);
     }
 
+    size_t capacity()
+    {
+        //substract one since the dot, whether currently used or not
+        //isn't part of the capacity
+        return m_digits.capacity() - 1;
+    }
+
 //private:
     void write(std::ostream &out) const
     {
