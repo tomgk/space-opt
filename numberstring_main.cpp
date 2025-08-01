@@ -100,27 +100,22 @@ void mainFlex()
     testN<F>("hello world!");
 }
 
-void NibbleStringAdd()
+void NibbleStringAddTpl(std::string input)
 {
     DecimalString a("");
-    ASSERT_EQ("", a.str());
-    ASSERT_EQ(false, a.isUnevenCount());
 
-    a += '1';
-    ASSERT_EQ(true, a.isUnevenCount());
-    ASSERT_EQ("1", a.str());
+    for(size_t i=0;i<input.size();++i)
+    {
+        ASSERT_EQ(input.substr(0, i), a.str());
+        a += input.at(i);
+    }
 
-    a += '2';
-    ASSERT_EQ("12", a.str());
+    ASSERT_EQ(input, a.str());
+}
 
-    a += '3';
-    ASSERT_EQ("123", a.str());
-
-    a += '4';
-    ASSERT_EQ("1234", a.str());
-
-    a += '5';
-    ASSERT_EQ("12345", a.str());
+void NibbleStringAdd()
+{
+    NibbleStringAddTpl("12345");
 }
 
 void testFloat(const char *str)
