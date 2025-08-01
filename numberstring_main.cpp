@@ -30,7 +30,7 @@ static void assertEq(const char *file, long line, const char *varA, const char *
 template<typename T>
 static void testN(const char *str)
 {
-    T d(str);
+    const T d(str);
 
     size_t len = strlen(str);
     size_t dSize = d.size();

@@ -78,7 +78,7 @@ public:
     }
 
     //only applies for concat, not other operations
-    size_t concat_capacity()
+    size_t concat_capacity() const
     {
         //since it is concat_capacity, the dot won't be overriden
         return m_digits.concat_capacity() + (m_pos != NO_POINT ? 1 : 0);

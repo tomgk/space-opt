@@ -122,7 +122,7 @@ public:
     }
 
     //only applies for concat, not other operations
-    size_t concat_capacity()
+    size_t concat_capacity() const
     {
         return m_values.capacity() * 2;
     }
