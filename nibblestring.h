@@ -121,7 +121,8 @@ public:
         m_values.reserve(size / 2 + size % 2);
     }
 
-    size_t capacity()
+    //only applies for concat, not other operations
+    size_t concat_capacity()
     {
         return m_values.capacity() * 2;
     }
