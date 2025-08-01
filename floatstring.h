@@ -4,6 +4,7 @@
 #include "numberstring.h"
 
 #include<numeric>
+#include<stdexcept>
 
 constexpr size_t NO_POINT = std::numeric_limits<size_t>::max();
 
@@ -31,6 +32,20 @@ public:
                 m_digits += c;
 
             ++index;
+        }
+    }
+
+    FloatString &operator+=(char c)
+    {
+        if(c != CHAR)
+            m_digits += c;
+        //it is the dot
+        else
+        {
+            if(m_pos != NO_POINT)
+                throw std::invalid_argument("double dot");
+
+            m_pos = m_digits.size();
         }
     }
 
