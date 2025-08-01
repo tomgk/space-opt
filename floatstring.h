@@ -63,7 +63,7 @@ public:
         }
     }
 
-private:
+//private:
     void write(std::ostream &out) const
     {
         size_t size = this->size();
@@ -71,6 +71,8 @@ private:
         for(size_t i=0;i<size;++i)
             out.put(at(i));
     }
+
+    //friend std::ostream& operator<< <Charset>(std::ostream &os, const FloatString<Charset> &str);
 };
 
 using FloatDecimalString = FloatString<NumberCharset<10>>;
@@ -79,7 +81,8 @@ using FloatHexString = FloatString<NumberCharset<16>>;
 template<typename Charset>
 inline std::ostream& operator<<(std::ostream &os, const FloatString<Charset> &str)
 {
-    os << str.str();
+    str.write(os);
+    //os << str.str();
     return os;
 }
 
