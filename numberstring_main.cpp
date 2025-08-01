@@ -103,6 +103,7 @@ void mainFlex()
 void NibbleStringAddTpl(std::string input)
 {
     DecimalString a("");
+    ASSERT_EQ("", a.str());
 
     for(size_t i=0;i<input.size();++i)
     {
