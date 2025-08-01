@@ -33,10 +33,12 @@ static void testN(const char *str)
     T d(str);
 
     size_t len = strlen(str);
+    size_t dSize = d.size();
+    size_t ccap = d.concat_capacity();
 
     std::cout << "INPUT: \"" << str << "\" (len = " << len << ")" << std::endl;
-    std::cout << "size: " << d.size() << std::endl;
-    std::cout << "ccap: " << d.concat_capacity() << std::endl;
+    std::cout << "size: " << dSize << std::endl;
+    std::cout << "ccap: " << ccap << std::endl;
     std::cout << "val:  \"" << d.str() << "\"" << std::endl;
     std::stringstream out;
     out << d;
@@ -44,7 +46,7 @@ static void testN(const char *str)
 
     ASSERT_EQ(str, d.str());
     ASSERT_EQ(str, out.str());
-    ASSERT_EQ(len, d.size());
+    ASSERT_EQ(len, dSize);
 
     for(size_t i=0;i<len;++i)
         ASSERT_EQ(str[i], d.at(i));
