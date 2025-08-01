@@ -151,7 +151,8 @@ public:
 
         return str;
     }
-    //private:
+
+private:
     void write(std::ostream &out) const
     {
         size_t size = this->size();
@@ -160,13 +161,13 @@ public:
             out.put(at(i));
     }
 
-    //    friend std::ostream& operator<<(std::ostream &os, const DigitString<Charset> &str);
+    friend std::ostream& operator<< <Charset>(std::ostream &os, const NibbleString<Charset> &str);
 };
 
 template<typename Charset>
 inline std::ostream& operator<<(std::ostream &os, const NibbleString<Charset> &str)
 {
-    os << str.str();
+    str.write(os);
     return os;
 }
 
