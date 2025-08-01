@@ -126,10 +126,15 @@ void testFloat(const char *str)
 void FloatDecimalTest()
 {
     testFloat("123.45");
+    std::cout << "------" << std::endl;
     testFloat("12345");
+    std::cout << "------" << std::endl;
     testFloat(".45");
+    std::cout << "------" << std::endl;
     testFloat("123.");
+    std::cout << "------" << std::endl;
     testFloat(".");
+    std::cout << "------" << std::endl;
     testFloat("");
 }
 
