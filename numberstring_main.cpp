@@ -100,9 +100,10 @@ void mainFlex()
     testN<F>("hello world!");
 }
 
+template<typename S>
 void NibbleStringAddTpl(std::string input)
 {
-    DecimalString a("");
+    S a("");
     ASSERT_EQ("", a.str());
 
     for(size_t i=0;i<input.size();++i)
@@ -116,7 +117,8 @@ void NibbleStringAddTpl(std::string input)
 
 void NibbleStringAdd()
 {
-    NibbleStringAddTpl("12345");
+    NibbleStringAddTpl<DecimalString>("12345");
+    NibbleStringAddTpl<DecimalString>("");
 }
 
 void testFloat(const char *str)
