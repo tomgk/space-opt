@@ -123,7 +123,7 @@ public:
 
     size_t capacity()
     {
-        return m_values.capacity();
+        return m_values.capacity() * 2;
     }
 
 private:
