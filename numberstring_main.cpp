@@ -119,6 +119,8 @@ void NibbleStringAdd()
 {
     NibbleStringAddTpl<DecimalString>("12345");
     NibbleStringAddTpl<DecimalString>("");
+    NibbleStringAddTpl<HexString>("CAFEBABE");
+    NibbleStringAddTpl<HexString>("");
     NibbleStringAddTpl<FloatDecimalString>("12345");
     NibbleStringAddTpl<FloatDecimalString>(".12345");
     NibbleStringAddTpl<FloatDecimalString>("12345.");
