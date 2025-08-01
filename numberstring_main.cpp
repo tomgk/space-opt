@@ -124,6 +124,7 @@ void NibbleStringAdd()
     NibbleStringAddTpl<FloatDecimalString>("12345");
     NibbleStringAddTpl<FloatDecimalString>(".12345");
     NibbleStringAddTpl<FloatDecimalString>("12345.");
+    NibbleStringAddTpl<FloatHexString>("CAFE.BABE");
 }
 
 void testFloat(const char *str)
