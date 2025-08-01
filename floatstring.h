@@ -63,6 +63,20 @@ public:
         }
     }
 
+    void reserve(size_t size)
+    {
+        //prevent underflow by early exit
+        if(size == 0)
+            return;
+
+        //if FloatString already contains a dot,
+        //we definitely don't need to reserve space for it
+        if(m_pos != NO_POINT)
+            --size;
+
+        m_digits.reserve(size);
+    }
+
 //private:
     void write(std::ostream &out) const
     {

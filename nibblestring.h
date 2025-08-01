@@ -115,6 +115,12 @@ public:
         return *this;
     }
 
+    void reserve(size_t size)
+    {
+        //reserve the number of bytes needed for that many nibbles
+        m_values.reserve(size / 2 + size % 2);
+    }
+
 private:
     char access(size_t v_index, bool hi) const
     {
