@@ -84,7 +84,7 @@ public:
 
         if(m_values.empty())
         {
-            std::cout << "ADD: start new string" << std::endl;
+            //std::cout << "ADD: start new string" << std::endl;
             m_values.push_back(to_hibit(val));
             m_unevenCount = true;
             return;
@@ -93,7 +93,7 @@ public:
         //uneven -> last nibble is still unfilled
         if(m_unevenCount)
         {
-            std::cout << "ADD: add to uneven" << std::endl;
+            //std::cout << "ADD: add to uneven" << std::endl;
             m_values.back() |= to_lobit(val);
             //mark it as filled
             m_unevenCount = false;
@@ -101,7 +101,7 @@ public:
         //even -> need a new byte
         else
         {
-            std::cout << "ADD: add new char" << std::endl;
+            //std::cout << "ADD: add new char" << std::endl;
             //since we start a new byte, it is the high val
             m_values.push_back(to_hibit(val));
             //and since the lobit isn't used yet, mark it as such
