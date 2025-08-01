@@ -2,6 +2,8 @@
 
 #include "flexcharset.h"
 
+#include "floatstring.h"
+
 #include<sstream>
 
 #define ASSERT_EQ(a, b) assertEq(__FILE__, __LINE__, #a, #b, a, b)
@@ -108,6 +110,21 @@ void NibbleStringAdd()
     ASSERT_EQ("12345", a.str());
 }
 
+void testFloat(const char *str)
+{
+    testN<FloatDecimalString>(str);
+}
+
+void FloatDecimalTest()
+{
+    testFloat("123.45");
+    testFloat("12345");
+    testFloat(".45");
+    testFloat("123.");
+    testFloat(".");
+    testFloat("");
+}
+
 int main()
 {
     main10();
@@ -117,4 +134,6 @@ int main()
     mainFlex();
     std::cout << "------" << std::endl;
     NibbleStringAdd();
+
+    FloatDecimalTest();
 }
