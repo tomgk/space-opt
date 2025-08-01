@@ -81,6 +81,7 @@ public:
     {
         //substract one since the dot, whether currently used or not
         //isn't part of the capacity
+        //TODO: still implies that an alloc is done when none is needed sometimes
         return m_digits.capacity() - 1;
     }
 
