@@ -52,6 +52,11 @@ static void testN(const char *str)
         ASSERT_EQ(str[i], d.at(i));
 }
 
+static void separator()
+{
+    std::cout << "------" << std::endl;
+}
+
 static void test10(const char *str)
 {
     testN<DecimalString>(str);
@@ -65,26 +70,26 @@ static void test16(const char *str)
 void main10()
 {
     test10("123");
-    std::cout << "------" << std::endl;
+    separator();
     test10("123456");
-    std::cout << "------" << std::endl;
+    separator();
     test10("");
-    std::cout << "------" << std::endl;
+    separator();
     test10("0");
 }
 
 void main16()
 {
     test16("12ABCDEF");
-    std::cout << "------" << std::endl;
+    separator();
     test16("ACE");
-    std::cout << "------" << std::endl;
+    separator();
     test16("1A2C3E");
-    std::cout << "------" << std::endl;
+    separator();
     test16("123456");
-    std::cout << "------" << std::endl;
+    separator();
     test16("");
-    std::cout << "------" << std::endl;
+    separator();
     test16("0");
 }
 
@@ -126,26 +131,26 @@ void testFloat(const char *str)
 void FloatDecimalTest()
 {
     testFloat("123.45");
-    std::cout << "------" << std::endl;
+    separator();
     testFloat("12345");
-    std::cout << "------" << std::endl;
+    separator();
     testFloat(".45");
-    std::cout << "------" << std::endl;
+    separator();
     testFloat("123.");
-    std::cout << "------" << std::endl;
+    separator();
     testFloat(".");
-    std::cout << "------" << std::endl;
+    separator();
     testFloat("");
 }
 
 int main()
 {
     main10();
-    std::cout << "------" << std::endl;
+    separator();
     main16();
-    std::cout << "------" << std::endl;
+    separator();
     mainFlex();
-    std::cout << "------" << std::endl;
+    separator();
     NibbleStringAdd();
 
     FloatDecimalTest();
