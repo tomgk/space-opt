@@ -46,6 +46,31 @@ public:
             s.insert(m_pos, 1, CHAR);
         return s;
     }
+
+    char at(size_t index) const
+    {
+        if(m_pos == NO_POINT)
+            return m_digits.at(index);
+        else
+        {
+            if(index < m_pos)
+                return m_digits.at(index);
+            else if(index == m_pos)
+                return CHAR;
+            else//if index > m_pos
+                //minus one since dot isnt't included in m_digits
+                return m_digits.at(index -1);
+        }
+    }
+
+private:
+    void write(std::ostream &out) const
+    {
+        size_t size = this->size();
+
+        for(size_t i=0;i<size;++i)
+            out.put(at(i));
+    }
 };
 
 using FloatDecimalString = FloatString<NumberCharset<10>>;
