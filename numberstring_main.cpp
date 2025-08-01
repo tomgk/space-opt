@@ -32,7 +32,9 @@ static void testN(const char *str)
 {
     T d(str);
 
-    std::cout << "INPUT: \"" << str << "\" (len = " << strlen(str) << ")" << std::endl;
+    size_t len = strlen(str);
+
+    std::cout << "INPUT: \"" << str << "\" (len = " << len << ")" << std::endl;
     std::cout << "size: " << d.size() << std::endl;
     std::cout << "val:  \"" << d.str() << "\"" << std::endl;
     std::stringstream out;
@@ -41,7 +43,10 @@ static void testN(const char *str)
 
     ASSERT_EQ(str, d.str());
     ASSERT_EQ(str, out.str());
-    ASSERT_EQ(strlen(str), d.size());
+    ASSERT_EQ(len, d.size());
+
+    for(size_t i=0;i<len;++i)
+        ASSERT_EQ(str[i], d.at(i));
 }
 
 static void test10(const char *str)
