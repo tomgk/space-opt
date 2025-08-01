@@ -36,6 +36,7 @@ static void testN(const char *str)
 
     std::cout << "INPUT: \"" << str << "\" (len = " << len << ")" << std::endl;
     std::cout << "size: " << d.size() << std::endl;
+    std::cout << "ccap: " << d.concat_capacity() << std::endl;
     std::cout << "val:  \"" << d.str() << "\"" << std::endl;
     std::stringstream out;
     out << d;
