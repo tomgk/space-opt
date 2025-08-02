@@ -4,14 +4,11 @@
 
 #include "floatstring.h"
 
+#include "separatortest.h"
+
 #include "numberstring_test.h"
 
 #include "base.h"
-
-void separator()
-{
-    std::cout << "------" << std::endl;
-}
 
 static void test10(const char *str)
 {

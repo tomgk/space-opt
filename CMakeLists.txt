@@ -13,14 +13,16 @@ add_library(space-opt-lib
     src/flexcharset.h src/flexcharset.cpp
     src/numberstring.h src/numberstring.cpp
     src/floatstring.h src/floatstring.cpp
-    test/numberstring_test.h
-    test/testnumberstring.h
 )
 target_include_directories(space-opt-lib PUBLIC src)
 
 add_executable(space-opt-test
+    test/separatortest.h test/separatortest.cpp
     test/base.h test/base.cpp
     test/testnumberstring.cpp
-    test/main.cpp)
+    test/main.cpp
+    test/numberstring_test.h
+    test/testnumberstring.h
+    test/separatortest.h test/separatortest.cpp)
 target_include_directories(space-opt-test PUBLIC src test)
 target_link_libraries(space-opt-test space-opt-lib)
