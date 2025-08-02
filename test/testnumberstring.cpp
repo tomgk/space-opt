@@ -57,7 +57,7 @@ void mainFlex()
 }
 
 template<typename S>
-void NibbleStringAddTpl(std::string input)
+void AppendTest(std::string input)
 {
     S a("");
     ASSERT_EQ("", a.str());
@@ -65,6 +65,7 @@ void NibbleStringAddTpl(std::string input)
     for(size_t i=0;i<input.size();++i)
     {
         ASSERT_EQ(input.substr(0, i), a.str());
+        ASSERT_EQ(i, a.size());
         a += input.at(i);
     }
 
@@ -73,14 +74,14 @@ void NibbleStringAddTpl(std::string input)
 
 void NibbleStringAdd()
 {
-    NibbleStringAddTpl<DecimalString>("12345");
-    NibbleStringAddTpl<DecimalString>("");
-    NibbleStringAddTpl<HexString>("CAFEBABE");
-    NibbleStringAddTpl<HexString>("");
-    NibbleStringAddTpl<FloatDecimalString>("12345");
-    NibbleStringAddTpl<FloatDecimalString>(".12345");
-    NibbleStringAddTpl<FloatDecimalString>("12345.");
-    NibbleStringAddTpl<FloatHexString>("CAFE.BABE");
+    AppendTest<DecimalString>("12345");
+    AppendTest<DecimalString>("");
+    AppendTest<HexString>("CAFEBABE");
+    AppendTest<HexString>("");
+    AppendTest<FloatDecimalString>("12345");
+    AppendTest<FloatDecimalString>(".12345");
+    AppendTest<FloatDecimalString>("12345.");
+    AppendTest<FloatHexString>("CAFE.BABE");
 }
 
 void testFloat(const char *str)
