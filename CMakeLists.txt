@@ -14,10 +14,13 @@ add_library(space-opt-lib
     src/numberstring.h src/numberstring.cpp
     src/floatstring.h src/floatstring.cpp
     test/numberstring_test.h
+    test/testnumberstring.h
 )
 target_include_directories(space-opt-lib PUBLIC src)
 
 add_executable(space-opt-test
     test/base.h test/base.cpp
-    test/numberstring_main.cpp)
+    test/testnumberstring.cpp
+    test/main.cpp)
+target_include_directories(space-opt-test PUBLIC src test)
 target_link_libraries(space-opt-test space-opt-lib)

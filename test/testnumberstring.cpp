@@ -1,4 +1,4 @@
-#include "numberstring.h"
+#include "testnumberstring.h"
 
 #include "flexcharset.h"
 
@@ -8,7 +8,7 @@
 
 #include "base.h"
 
-static void separator()
+void separator()
 {
     std::cout << "------" << std::endl;
 }
@@ -101,17 +101,4 @@ void FloatDecimalTest()
     testFloat(".");
     separator();
     testFloat("");
-}
-
-int main()
-{
-    main10();
-    separator();
-    main16();
-    separator();
-    mainFlex();
-    separator();
-    NibbleStringAdd();
-
-    FloatDecimalTest();
 }
