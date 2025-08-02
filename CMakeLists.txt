@@ -17,5 +17,5 @@ add_library(space-opt-lib
 target_include_directories(space-opt-lib PUBLIC src)
 
 add_executable(space-opt-test
-    numberstring_main.cpp)
+    test/numberstring_main.cpp)
 target_link_libraries(space-opt-test space-opt-lib)
