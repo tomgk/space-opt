@@ -78,7 +78,9 @@ void NibbleStringAdd()
     AppendTest<FloatDecimalString>("12345");
     AppendTest<FloatDecimalString>(".12345");
     AppendTest<FloatDecimalString>("12345.");
+    AppendTest<FloatDecimalString>("");
     AppendTest<FloatHexString>("CAFE.BABE");
+    AppendTest<FloatHexString>("");
 }
 
 void testFloat(const char *str)
