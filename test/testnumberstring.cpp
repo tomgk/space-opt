@@ -104,3 +104,15 @@ void FloatDecimalTest()
     separator();
     testFloat("");
 }
+
+/*
+void testBinary(const char *str)
+{
+    testN<BinaryString>(str);
+}
+
+void BinaryTest()
+{
+    x;
+}
+*/
