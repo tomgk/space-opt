@@ -13,6 +13,7 @@ add_library(space-opt-lib
     src/flexcharset.h src/flexcharset.cpp
     src/numberstring.h src/numberstring.cpp
     src/floatstring.h src/floatstring.cpp
+    src/binarystring.h src/binarystring.cpp
 )
 target_include_directories(space-opt-lib PUBLIC src)
 

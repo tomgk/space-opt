@@ -10,6 +10,8 @@
 
 #include "base.h"
 
+#include "binarystring.h"
+
 static void test10(const char *str)
 {
     testN<DecimalString>(str);
