@@ -128,11 +128,16 @@ public:
     }
 
 private:
+    static int accessNibble(char val, bool hi)
+    {
+        return (hi ? val >> 4 : val) & 0xF;
+    }
+
     char access(size_t v_index, bool hi) const
     {
         char val = m_values.at(v_index);
 
-        int v = (hi ? val >> 4 : val) & 0xF;
+        int v = accessNibble(val, hi);
 
         //std::cout << "[" << v_index << "/" << (hi ? "hi" : "lo") << "] ";
         //std::cout << "= " << v << std::endl;
@@ -140,13 +145,49 @@ private:
         return Charset::toChar(v);
     }
 public:
+    template<typename PTR>
+    class reference
+    {
+        PTR m_ptr;
+        bool m_hi;
+
+        void dump() const
+        {
+            //std::cout << "reference@" << (const void*)m_ptr << " = " << std::hex << (int)*m_ptr << " hi=" << m_hi << std::endl;
+        }
+
+    public:
+        reference(PTR ptr, bool hi): m_ptr(ptr), m_hi(hi)
+        {
+            dump();
+        }
+
+        operator char() const
+        {
+            dump();
+            int v = accessNibble(*m_ptr, m_hi);
+            //std::cout << " --> " << v << std::endl;
+            return Charset::toChar(v);
+        }
+    };
+
+    reference<char*> at(size_t index)
+    {
+        return {&m_values.at(index/2), index % 2 == 0};
+    }
+
+    reference<const char*> at(size_t index) const
+    {
+        return {&m_values.at(index/2), index % 2 == 0};
+    }
+/*
     char at(size_t index) const
     {
         size_t v_index = index/2;
         bool hi = index % 2 == 0;
         return access(v_index, hi);
     }
-
+*/
     size_t size() const
     {
         return m_values.size() * 2 - (m_unevenCount ? 1 : 0);
@@ -159,7 +200,7 @@ public:
         str.reserve(size);
 
         for(size_t i=0;i<size;++i)
-            str += at(i);
+            str += (char)at(i);
 
         return str;
     }
