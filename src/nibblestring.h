@@ -7,7 +7,7 @@
 #include<iostream>
 
 template<typename T>
-concept Charset = requires(T a)
+concept NibbleCharset = requires(T a)
 {
     //takes str[index] and returns the value in the charset
     requires requires (const char *str, size_t index) {
@@ -20,7 +20,7 @@ concept Charset = requires(T a)
     };
 };
 
-template<Charset Charset>
+template<NibbleCharset Charset>
 class NibbleString
 {
     std::vector<char> m_values;
