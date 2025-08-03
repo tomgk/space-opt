@@ -9,10 +9,12 @@
 template<typename T>
 concept Charset = requires(T a)
 {
+    //takes str[index] and returns the value in the charset
     requires requires (const char *str, size_t index) {
         {T::getCharValue(str, index)} -> std::same_as<int>;
     };
 
+    //turns a charset value and retursn
     requires requires (int value) {
         {T::toChar(value)} -> std::same_as<char>;
     };
