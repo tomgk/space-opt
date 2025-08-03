@@ -188,14 +188,7 @@ public:
     {
         return constructReference<reference<const char*>>(*this, index);
     }
-/*
-    char at(size_t index) const
-    {
-        size_t v_index = index/2;
-        bool hi = index % 2 == 0;
-        return access(v_index, hi);
-    }
-*/
+
     size_t size() const
     {
         return m_values.size() * 2 - (m_unevenCount ? 1 : 0);
