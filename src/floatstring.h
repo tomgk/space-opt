@@ -8,10 +8,10 @@
 
 constexpr size_t NO_POINT = std::numeric_limits<size_t>::max();
 
-template<typename Charset>
+template<typename N>
 class FloatString
 {
-    NibbleString<Charset> m_digits;
+    N m_digits;
     size_t m_pos;
     static constexpr char CHAR = '.';
 public:
@@ -111,8 +111,8 @@ public:
     //friend std::ostream& operator<< <Charset>(std::ostream &os, const FloatString<Charset> &str);
 };
 
-using FloatDecimalString = FloatString<NumberCharset<10>>;
-using FloatHexString = FloatString<NumberCharset<16>>;
+using FloatDecimalString = FloatString<NibbleString<NumberCharset<10>>>;
+using FloatHexString = FloatString<NibbleString<NumberCharset<16>>>;
 
 template<typename Charset>
 inline std::ostream& operator<<(std::ostream &os, const FloatString<Charset> &str)
