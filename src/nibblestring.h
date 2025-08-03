@@ -171,14 +171,22 @@ public:
         }
     };
 
+private:
+template<typename Ref, typename NS>
+    static Ref constructReference(NS& string, size_t index)
+    {
+        return {&string.m_values.at(index/2), index % 2 == 0};
+    }
+public:
+
     reference<char*> at(size_t index)
     {
-        return {&m_values.at(index/2), index % 2 == 0};
+        return constructReference<reference<char*>>(*this, index);
     }
 
     reference<const char*> at(size_t index) const
     {
-        return {&m_values.at(index/2), index % 2 == 0};
+        return constructReference<reference<const char*>>(*this, index);
     }
 /*
     char at(size_t index) const
