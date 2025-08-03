@@ -200,7 +200,7 @@ public:
         str.reserve(size);
 
         for(size_t i=0;i<size;++i)
-            str += (char)at(i);
+            str += at(i);
 
         return str;
     }
