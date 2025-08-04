@@ -4,7 +4,7 @@
 
 #include "optional.h"
 
-#include "numberstring.h"
+#include "integerstring.h"
 
 static_assert(sizeof(int) == sizeof(Optional<NonZero<int>>));
 

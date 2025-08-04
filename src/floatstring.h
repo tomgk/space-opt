@@ -1,7 +1,7 @@
 #ifndef FLOATSTRING_H
 #define FLOATSTRING_H
 
-#include "numberstring.h"
+#include "integerstring.h"
 
 #include<numeric>
 #include<stdexcept>

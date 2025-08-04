@@ -11,7 +11,7 @@ add_library(space-opt-lib
 
     src/nibblestring.h src/nibblestring.cpp
     src/flexcharset.h src/flexcharset.cpp
-    src/numberstring.h src/numberstring.cpp
+    src/integerstring.h src/integerstring.cpp
     src/floatstring.h src/floatstring.cpp
     src/binarystring.h src/binarystring.cpp
     src/digitcharset.h src/digitcharset.cpp
