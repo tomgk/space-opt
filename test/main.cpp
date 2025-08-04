@@ -1,5 +1,7 @@
 #include "testnumberstring.h"
 
+#include<iostream>
+
 int main()
 {
     main10();
@@ -8,11 +10,14 @@ int main()
     separator();
     mainFlex();
     separator();
-    NibbleStringAdd();
 
     FloatDecimalTest();
 
     FixLengthFloatDecimalTest();
 
     BinaryTest();
+
+    NibbleStringAdd();
+
+    std::cout << "SUCESS" << std::endl;
 }
