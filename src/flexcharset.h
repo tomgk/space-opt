@@ -12,7 +12,7 @@ class FlexCharset
     static_assert(COUNT > 2);
     static_assert(COUNT <= 16);
 public:
-    static int getCharValue(const char *str, size_t index)
+    static int getCharValue(std::string_view str, size_t index)
     {
         char c = str[index];
 

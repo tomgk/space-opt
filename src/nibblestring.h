@@ -10,7 +10,7 @@ template<typename T>
 concept NibbleCharset = requires(T a)
 {
     //takes str[index] and returns the value in the charset
-    requires requires (const char *str, size_t index) {
+    requires requires (std::string_view str, size_t index) {
         {T::getCharValue(str, index)} -> std::same_as<int>;
     };
 
@@ -49,9 +49,9 @@ public:
         return m_unevenCount;
     }
 
-    NibbleString(const char *str)
+    NibbleString(std::string_view str)
     {
-        size_t len = strlen(str);
+        size_t len = str.size();
         m_values.reserve(len*2+len%2);
 
         size_t cappedLen = len / 2 * 2;
@@ -81,7 +81,7 @@ public:
 
     void add(char c)
     {
-        char arr[]{c, '\0'};
+        std::string_view arr(&c, 1);
         int val = Charset::getCharValue(arr, 0);
 
         if(m_values.empty())
