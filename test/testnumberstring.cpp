@@ -131,4 +131,10 @@ void testBinary(const char *str)
 void BinaryTest()
 {
     testBinary("");
+    separator();
+    testBinary("0");
+    separator();
+    testBinary("1");
+    separator();
+    testBinary("10011111011");
 }
