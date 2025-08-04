@@ -14,6 +14,7 @@ add_library(space-opt-lib
     src/numberstring.h src/numberstring.cpp
     src/floatstring.h src/floatstring.cpp
     src/binarystring.h src/binarystring.cpp
+    src/digitcharset.h src/digitcharset.cpp
 )
 target_include_directories(space-opt-lib PUBLIC src)
 
