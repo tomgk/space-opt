@@ -20,10 +20,10 @@ concept NibbleCharset = requires(T a)
     };
 };
 
-template<NibbleCharset Charset>
+template<NibbleCharset Charset, typename Collection = std::vector<char>>
 class NibbleString
 {
-    std::vector<char> m_values;
+    Collection m_values;
     bool m_unevenCount;
 
     static void checkVal(int val)
