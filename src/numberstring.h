@@ -34,6 +34,9 @@ public:
 
     static char toChar(int value)
     {
+        if(value >= N)
+            throw std::invalid_argument("too high: "+std::to_string(value));
+
         if(N <= 10)
             return value + '0';
         else
