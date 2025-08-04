@@ -57,6 +57,8 @@ public:
 
             m_pos = m_digits.size();
         }
+
+        return *this;
     }
 
     size_t size() const

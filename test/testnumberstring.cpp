@@ -65,7 +65,8 @@ void AppendTest(std::string input)
     {
         ASSERT_EQ(input.substr(0, i), a.str());
         ASSERT_EQ(i, a.size());
-        a += input.at(i);
+        char c = input.at(i);
+        a += c;
     }
 
     ASSERT_EQ(input, a.str());

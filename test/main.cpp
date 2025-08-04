@@ -29,7 +29,7 @@ int main()
     BinaryTest();
 
     IntegerNibbleStringAdd();
-    //TODO: reactivate FloatNibbleStringAdd();
+    FloatNibbleStringAdd();
 
     std::cout << "SUCESS" << std::endl;
 }
