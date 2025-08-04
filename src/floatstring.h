@@ -15,6 +15,12 @@ class FloatString
     size_t m_pos;
     static constexpr char CHAR = '.';
 public:
+    FloatString(const N &digits):
+        m_digits(digits), m_pos(NO_POINT)
+    {
+
+    }
+
     FloatString(const std::string_view str):
         m_digits(""), m_pos(NO_POINT)
     {
