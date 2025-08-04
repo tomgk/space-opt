@@ -6,8 +6,6 @@
 #include<numeric>
 #include<stdexcept>
 
-constexpr size_t NO_POINT = std::numeric_limits<size_t>::max();
-
 template<typename C>
 class FloatString
 {
@@ -15,6 +13,8 @@ class FloatString
     S m_digits;
     size_t m_pos;
     static constexpr char CHAR = '.';
+
+    static constexpr size_t NO_POINT = std::numeric_limits<size_t>::max();
 public:
     FloatString(const S &digits):
         m_digits(digits), m_pos(NO_POINT)
