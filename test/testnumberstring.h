@@ -7,6 +7,7 @@ void main16();
 void mainFlex();
 void NibbleStringAdd();
 void FloatDecimalTest();
+void FixLengthFloatDecimalTest();
 void BinaryTest();
 
 #endif // TESTNUMBERSTRING_H

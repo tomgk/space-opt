@@ -118,7 +118,6 @@ void FixLengthFloatDecimalTest()
     testFixLenFloat<1>("1");
 }
 
-/*
 void testBinary(const char *str)
 {
     testN<BinaryString>(str);
@@ -126,6 +125,5 @@ void testBinary(const char *str)
 
 void BinaryTest()
 {
-    x;
+    testBinary("");
 }
-*/

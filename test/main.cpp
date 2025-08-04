@@ -11,4 +11,8 @@ int main()
     NibbleStringAdd();
 
     FloatDecimalTest();
+
+    FixLengthFloatDecimalTest();
+
+    BinaryTest();
 }
