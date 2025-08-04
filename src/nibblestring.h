@@ -9,7 +9,7 @@
 template<typename T>
 concept NibbleCharset = requires(T a)
 {
-    //takes str[index] and returns the value in the charset
+    //takes ch and returns the value in the charset
     requires requires (char ch) {
         {T::getCharValue(ch)} -> std::same_as<int>;
     };
