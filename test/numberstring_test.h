@@ -31,4 +31,15 @@ static void testN(const char *str)
         ASSERT_EQ(str[i], d.at(i));
 }
 
+template<typename T>
+static void testNFailed(const char *str, const char *error)
+{
+    try{
+        const T d(str);
+        FAIL("no error");
+    }catch(const std::exception &e){
+        ASSERT_EQ((std::string)e.what(), (std::string)error);
+    }
+}
+
 #endif // NUMBERSTRING_TEST_H

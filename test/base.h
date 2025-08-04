@@ -4,6 +4,7 @@
 #include<stdexcept>
 
 #define ASSERT_EQ(a, b) assertEq(__FILE__, __LINE__, #a, #b, a, b)
+#define FAIL(str) throw std::invalid_argument(str)
 
 namespace std
 {

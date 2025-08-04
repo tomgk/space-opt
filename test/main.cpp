@@ -13,7 +13,7 @@ LONG handleError(struct _EXCEPTION_POINTERS *ExceptionInfo)
 
 int main()
 {
-    AddVectoredContinueHandler(1, handleError);
+    //AddVectoredContinueHandler(1, handleError);
 
     main10();
     separator();

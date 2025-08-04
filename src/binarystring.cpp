@@ -10,9 +10,12 @@ BinaryString::BinaryString(const char *str)
     {
         char c = str[i];
         bool v;
-        if(c == '0') v = false;
-        else if(c == '1') v = true;
-        else throw std::invalid_argument(std::string()+"val: "+str);
+        if(c == '0')
+            v = false;
+        else if(c == '1')
+            v = true;
+        else
+            throw std::invalid_argument("Invalid value at index "+std::to_string(i)+": "+c+" - full string is "+str);
 
         data.push_back(v);
     }

@@ -128,6 +128,11 @@ void testBinary(const char *str)
     testN<BinaryString>(str);
 }
 
+void testBinaryFail(const char *str, const char *error)
+{
+    testNFailed<BinaryString>(str, error);
+}
+
 void BinaryTest()
 {
     testBinary("");
@@ -137,4 +142,6 @@ void BinaryTest()
     testBinary("1");
     separator();
     testBinary("10011111011");
+    separator();
+    testBinaryFail("2", "Invalid value at index 0: 2 - full string is 2");
 }
