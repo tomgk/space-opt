@@ -71,12 +71,16 @@ void AppendTest(std::string input)
     ASSERT_EQ(input, a.str());
 }
 
-void NibbleStringAdd()
+void IntegerNibbleStringAdd()
 {
     AppendTest<DecimalString>("12345");
     AppendTest<DecimalString>("");
     AppendTest<HexString>("CAFEBABE");
     AppendTest<HexString>("");
+}
+
+void FloatNibbleStringAdd()
+{
     AppendTest<FloatDecimalString>("12345");
     AppendTest<FloatDecimalString>(".12345");
     AppendTest<FloatDecimalString>("12345.");
