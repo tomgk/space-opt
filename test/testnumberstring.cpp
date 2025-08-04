@@ -105,6 +105,19 @@ void FloatDecimalTest()
     testFloat("");
 }
 
+#include "maxlengtharray.h"
+
+template<size_t size>
+void testFixLenFloat(const char *str)
+{
+    testN<FloatString<DigitCharset<10>, MaxLengthArray<char, size>>>(str);
+}
+
+void FixLengthFloatDecimalTest()
+{
+    testFixLenFloat<1>("1");
+}
+
 /*
 void testBinary(const char *str)
 {

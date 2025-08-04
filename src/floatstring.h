@@ -6,10 +6,10 @@
 #include<numeric>
 #include<stdexcept>
 
-template<typename C>
+template<typename C, typename Collection = std::vector<char>>
 class FloatString
 {
-    using S = NibbleString<C>;
+    using S = NibbleString<C, Collection>;
     S m_digits;
     size_t m_pos;
     static constexpr char CHAR = '.';
@@ -124,8 +124,8 @@ public:
 using FloatDecimalString = FloatString<DigitCharset<10>>;
 using FloatHexString = FloatString<DigitCharset<16>>;
 
-template<typename Charset>
-inline std::ostream& operator<<(std::ostream &os, const FloatString<Charset> &str)
+template<typename Charset, typename Collection>
+inline std::ostream& operator<<(std::ostream &os, const FloatString<Charset, Collection> &str)
 {
     str.write(os);
     //os << str.str();

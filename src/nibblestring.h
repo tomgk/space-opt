@@ -219,8 +219,8 @@ private:
     friend std::ostream& operator<< <Charset>(std::ostream &os, const NibbleString<Charset> &str);
 };
 
-template<typename Charset>
-inline std::ostream& operator<<(std::ostream &os, const NibbleString<Charset> &str)
+template<typename Charset, typename Collection>
+inline std::ostream& operator<<(std::ostream &os, const NibbleString<Charset, Collection> &str)
 {
     str.write(os);
     return os;
