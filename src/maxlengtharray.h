@@ -52,7 +52,7 @@ public:
 
     T &at(size_t index)
     {
-        if(index < m_size)
+        if(index >= m_size)
             throw std::out_of_range("out of bounds");
 
         return m_data[index];
@@ -60,7 +60,7 @@ public:
 
     const T &at(size_t index) const
     {
-        if(index < m_size)
+        if(index >= m_size)
             throw std::out_of_range("out of bounds");
 
         return m_data[index];
