@@ -6,20 +6,18 @@ static const char ALPHA_START = 'A';
 static const char ALPHA_END   = 'Z';
 static int ALPHA_LEN = ALPHA_END - ALPHA_START;
 
-static std::invalid_argument raiseInvalid(std::string_view str, size_t index)
+static std::invalid_argument raiseInvalid(char ch)
 {
-    char ch = str[index];
-    return std::invalid_argument(std::string()+"invalid: "+std::string(str)+" - digit DEC"+std::to_string(int(ch)));;
+    return std::invalid_argument(std::string("invalid: DEC"+std::to_string(int(ch))));
 }
 
 template<size_t N>
-int NumberCharset<N>::getCharValue(std::string_view str, size_t index)
+int NumberCharset<N>::getCharValue(char ch)
 {
-    char ch = str[index];
     if(N <= 10)
     {
         if(ch < '0' || ch > '9')
-            throw raiseInvalid(str, index);
+            throw raiseInvalid(ch);
 
         return ch - '0';
     }
@@ -30,7 +28,7 @@ int NumberCharset<N>::getCharValue(std::string_view str, size_t index)
         else if(ch >= ALPHA_START && ch <= ALPHA_END)
             return ch - ALPHA_START + 10;
         else
-            throw raiseInvalid(str, index);
+            throw raiseInvalid(ch);
     }
 }
 

@@ -12,11 +12,9 @@ class FlexCharset
     static_assert(COUNT > 2);
     static_assert(COUNT <= 16);
 public:
-    static int getCharValue(std::string_view str, size_t index)
+    static int getCharValue(char ch)
     {
-        char c = str[index];
-
-        auto iter = std::find(std::begin(VALUES), std::end(VALUES), c);
+        auto iter = std::find(std::begin(VALUES), std::end(VALUES), ch);
         if(iter == std::end(VALUES))
             throw std::invalid_argument("invalid character");
 

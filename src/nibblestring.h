@@ -10,8 +10,8 @@ template<typename T>
 concept NibbleCharset = requires(T a)
 {
     //takes str[index] and returns the value in the charset
-    requires requires (std::string_view str, size_t index) {
-        {T::getCharValue(str, index)} -> std::same_as<int>;
+    requires requires (char ch) {
+        {T::getCharValue(ch)} -> std::same_as<int>;
     };
 
     //turns a charset value and retursn
@@ -58,8 +58,8 @@ public:
 
         for(size_t i = 0; i < cappedLen; i+=2)
         {
-            int n1 = Charset::getCharValue(str, i);
-            int n2 = Charset::getCharValue(str, i+1);
+            int n1 = Charset::getCharValue(str.at(i));
+            int n2 = Charset::getCharValue(str.at(i+1));
 
             int v = to_hibit(n1) | to_lobit(n2);
             m_values.push_back(v);
@@ -81,8 +81,7 @@ public:
 
     void add(char c)
     {
-        std::string_view arr(&c, 1);
-        int val = Charset::getCharValue(arr, 0);
+        int val = Charset::getCharValue(c);
 
         if(m_values.empty())
         {

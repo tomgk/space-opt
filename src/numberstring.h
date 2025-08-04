@@ -7,7 +7,7 @@ template<size_t N>
 class NumberCharset
 {
 public:
-    static int getCharValue(std::string_view str, size_t index);
+    static int getCharValue(char ch);
     static char toChar(int value);
 };
 
