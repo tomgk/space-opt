@@ -121,8 +121,8 @@ public:
     //friend std::ostream& operator<< <Charset>(std::ostream &os, const FloatString<Charset> &str);
 };
 
-using FloatDecimalString = FloatString<NumberCharset<10>>;
-using FloatHexString = FloatString<NumberCharset<16>>;
+using FloatDecimalString = FloatString<DigitCharset<10>>;
+using FloatHexString = FloatString<DigitCharset<16>>;
 
 template<typename Charset>
 inline std::ostream& operator<<(std::ostream &os, const FloatString<Charset> &str)

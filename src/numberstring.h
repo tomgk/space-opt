@@ -6,7 +6,7 @@
 std::invalid_argument raiseInvalid(char ch);
 
 template<size_t N>
-class NumberCharset
+class DigitCharset
 {
     static constexpr char ALPHA_START = 'A';
     static constexpr char ALPHA_END   = 'Z';
@@ -48,10 +48,10 @@ public:
     }
 };
 
-template class NumberCharset<10>;
-template class NumberCharset<16>;
+template class DigitCharset<10>;
+template class DigitCharset<16>;
 
-using DecimalString = NibbleString<NumberCharset<10>>;
-using HexString = NibbleString<NumberCharset<16>>;
+using DecimalString = NibbleString<DigitCharset<10>>;
+using HexString = NibbleString<DigitCharset<16>>;
 
 #endif // NUMBERSTRING_H
