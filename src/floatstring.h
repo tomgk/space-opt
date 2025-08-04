@@ -18,6 +18,9 @@ public:
     FloatString(std::string_view str):
         m_digits(""), m_pos(NO_POINT)
     {
+        bool hasDot = str.find(CHAR) != std::string_view::npos;
+        m_digits.reserve(str.size() - (hasDot ? 1 : 0));
+
         size_t index = 0;
         for(char c : str)
         {
