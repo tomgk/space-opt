@@ -49,7 +49,7 @@ public:
         return m_unevenCount;
     }
 
-    NibbleString(std::string_view str)
+    NibbleString(const std::string_view str)
     {
         size_t len = str.size();
         m_values.reserve(len*2+len%2);

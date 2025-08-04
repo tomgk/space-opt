@@ -15,7 +15,7 @@ class FloatString
     size_t m_pos;
     static constexpr char CHAR = '.';
 public:
-    FloatString(std::string_view str):
+    FloatString(const std::string_view str):
         m_digits(""), m_pos(NO_POINT)
     {
         bool hasDot = str.find(CHAR) != std::string_view::npos;
