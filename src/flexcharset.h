@@ -16,7 +16,7 @@ public:
     {
         auto iter = std::find(std::begin(VALUES), std::end(VALUES), ch);
         if(iter == std::end(VALUES))
-            throw std::invalid_argument("invalid character");
+            throw std::invalid_argument("invalid character "+std::string(1, ch));
 
         return iter - std::begin(VALUES);
     }
