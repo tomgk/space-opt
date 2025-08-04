@@ -70,7 +70,7 @@ public:
         {
             m_unevenCount = true;
 
-            int n1 = Charset::getCharValue(str, len-1);
+            int n1 = Charset::getCharValue(str.at(len-1));
 
             int v = to_hibit(n1) | to_lobit(0);
             m_values.push_back(v);
