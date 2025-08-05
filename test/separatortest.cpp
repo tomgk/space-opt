@@ -4,5 +4,11 @@
 
 void separator()
 {
-    std::cout << "------" << std::endl;
+    if(doOutput())
+        std::cout << "------" << std::endl;
+}
+
+bool doOutput()
+{
+    return false;
 }

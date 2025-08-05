@@ -6,6 +6,8 @@
 #include<sstream>
 #include "base.h"
 
+bool doOutput();
+
 template<typename T>
 static void testN(const char *str)
 {
@@ -15,13 +17,17 @@ static void testN(const char *str)
     size_t dSize = d.size();
     size_t ccap = d.concat_capacity();
 
-    std::cout << "INPUT: \"" << str << "\" (len = " << len << ")" << std::endl;
-    std::cout << "size: " << dSize << std::endl;
-    std::cout << "ccap: " << ccap << std::endl;
-    std::cout << "val:  \"" << d.str() << "\"" << std::endl;
+    if(doOutput())
+    {
+        std::cout << "INPUT: \"" << str << "\" (len = " << len << ")" << std::endl;
+        std::cout << "size: " << dSize << std::endl;
+        std::cout << "ccap: " << ccap << std::endl;
+        std::cout << "val:  \"" << d.str() << "\"" << std::endl;
+    }
     std::stringstream out;
     out << d;
-    std::cout << "valo: \"" << out.str() << "\"" << std::endl;
+    if(doOutput())
+        std::cout << "valo: \"" << out.str() << "\"" << std::endl;
 
     ASSERT_EQ(str, d.str());
     ASSERT_EQ(str, out.str());
