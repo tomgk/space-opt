@@ -143,5 +143,5 @@ void BinaryTest()
     separator();
     testBinary("10011111011");
     separator();
-    testBinaryFail("2", "Invalid value at index 0: 2 - full string is 2");
+    testBinaryFail("2", "Invalid value: 2");//Invalid value at index 0: 2 - full string is 2");
 }

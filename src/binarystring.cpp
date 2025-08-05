@@ -25,13 +25,7 @@ BinaryString::BinaryString(const char *str)
     for(size_t i = 0; i < size; ++i)
     {
         char c = str[i];
-        bool v;
-        if(c == '0')
-            v = false;
-        else if(c == '1')
-            v = true;
-        else
-            throw std::invalid_argument("Invalid value at index "+std::to_string(i)+": "+c+" - full string is "+str);
+        bool v = toBool(c);
 
         data.push_back(v);
     }
@@ -54,7 +48,7 @@ int BinaryString::concat_capacity() const
 
 char BinaryString::at(size_t index) const
 {
-    return data.at(index) ? '1' : '0';
+    return toChar(data.at(index));
 }
 
 std::string BinaryString::str() const
@@ -62,12 +56,12 @@ std::string BinaryString::str() const
     std::string str;
     str.reserve(data.size());
     for(bool b : data)
-        str += (b ? '1' : '0');
+        str += toChar(b);
     return str;
 }
 
 void BinaryString::write(std::ostream &out) const
 {
     for(bool b : data)
-        out.put(b ? '1' : '0');
+        out.put(toChar(b));
 }
