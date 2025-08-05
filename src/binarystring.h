@@ -20,6 +20,12 @@ public:
     char at(size_t index) const;
     std::string str() const;
 
+    BinaryString &operator+=(char c)
+    {
+        data.push_back(toBool(c));
+        return *this;
+    }
+
 private:
     void write(std::ostream &out) const;
 
