@@ -8,6 +8,10 @@
 class BinaryString
 {
     std::vector<bool> data;
+
+    static bool toBool(char ch);
+    static char toChar(bool b);
+
 public:
     BinaryString(const char *str);
     int size() const;
