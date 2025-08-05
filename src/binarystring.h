@@ -5,32 +5,34 @@
 #include<string>
 #include<iostream>
 
-class BinaryString
+template<typename Collection = std::vector<bool>>
+class BasicBinaryString
 {
-    std::vector<bool> data;
+    Collection data;
 
     static bool toBool(char ch);
     static char toChar(bool b);
-
 public:
-    BinaryString(const char *str);
+    BasicBinaryString(const char *str);
     int size() const;
     int size();
     int concat_capacity() const;
     char at(size_t index) const;
     std::string str() const;
-    BinaryString &operator+=(char c);
+    BasicBinaryString &operator+=(char c);
 
 private:
     void write(std::ostream &out) const;
 
 public:
-    friend inline std::ostream& operator<<(std::ostream &out, const BinaryString &str)
+    friend inline std::ostream& operator<<(std::ostream &out, const BasicBinaryString &str)
     {
         str.write(out);
         return out;
     }
 };
+
+using BinaryString = BasicBinaryString<>;
 
 
 #endif // BINARYSTRING_H

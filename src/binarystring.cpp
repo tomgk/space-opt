@@ -3,7 +3,8 @@
 #include<stdexcept>
 #include<cstring>
 
-bool BinaryString::toBool(char ch)
+template<typename Collection>
+bool BasicBinaryString<Collection>::toBool(char ch)
 {
     if(ch == '0')
         return false;
@@ -14,12 +15,14 @@ bool BinaryString::toBool(char ch)
         //throw std::invalid_argument("Invalid value at index "+std::to_string(i)+": "+ch+" - full string is "+str);
 }
 
-char BinaryString::toChar(bool b)
+template<typename Collection>
+char BasicBinaryString<Collection>::toChar(bool b)
 {
     return b ? '1' : '0';
 }
 
-BinaryString::BinaryString(const char *str)
+template<typename Collection>
+BasicBinaryString<Collection>::BasicBinaryString(const char *str)
 {
     size_t size = strlen(str);
     for(size_t i = 0; i < size; ++i)
@@ -31,27 +34,32 @@ BinaryString::BinaryString(const char *str)
     }
 }
 
-int BinaryString::size() const
+template<typename Collection>
+int BasicBinaryString<Collection>::size() const
 {
     return data.size();
 }
 
-int BinaryString::size()
+template<typename Collection>
+int BasicBinaryString<Collection>::size()
 {
     return data.size();
 }
 
-int BinaryString::concat_capacity() const
+template<typename Collection>
+int BasicBinaryString<Collection>::concat_capacity() const
 {
     return data.capacity();
 }
 
-char BinaryString::at(size_t index) const
+template<typename Collection>
+char BasicBinaryString<Collection>::at(size_t index) const
 {
     return toChar(data.at(index));
 }
 
-std::string BinaryString::str() const
+template<typename Collection>
+std::string BasicBinaryString<Collection>::str() const
 {
     std::string str;
     str.reserve(data.size());
@@ -60,14 +68,18 @@ std::string BinaryString::str() const
     return str;
 }
 
-BinaryString &BinaryString::operator+=(char c)
+template<typename Collection>
+BasicBinaryString<Collection> &BasicBinaryString<Collection>::operator+=(char c)
 {
     data.push_back(toBool(c));
     return *this;
 }
 
-void BinaryString::write(std::ostream &out) const
+template<typename Collection>
+void BasicBinaryString<Collection>::write(std::ostream &out) const
 {
     for(bool b : data)
         out.put(toChar(b));
 }
+
+template class BasicBinaryString<>;
