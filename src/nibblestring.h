@@ -18,6 +18,11 @@ concept NibbleCharset = requires(T a)
     requires requires (int value) {
         {T::toChar(value)} -> std::same_as<char>;
     };
+
+    requires requires(){
+        //TODO: this doesn't work despite requiring bitsize to exist
+        T::bitsize <= 4;
+    };
 };
 
 template<NibbleCharset Charset, typename Collection = std::vector<char>>

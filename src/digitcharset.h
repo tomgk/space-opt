@@ -17,6 +17,8 @@ class DigitCharset
     static_assert(N >= 2);
     static_assert(N <= NUM_COUNT + ALPHA_COUNT);
 public:
+    static constexpr size_t bitsize = 4;
+
     static int getCharValue(char ch)
     {
         if constexpr(N <= NUM_COUNT)

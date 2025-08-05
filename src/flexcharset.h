@@ -12,6 +12,8 @@ class FlexCharset
     static_assert(COUNT > 2);
     static_assert(COUNT <= 16);
 public:
+    static constexpr size_t bitsize = 3;
+
     static int getCharValue(char ch)
     {
         auto iter = std::find(std::begin(VALUES), std::end(VALUES), ch);
