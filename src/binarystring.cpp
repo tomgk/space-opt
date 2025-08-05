@@ -20,3 +20,32 @@ BinaryString::BinaryString(const char *str)
         data.push_back(v);
     }
 }
+
+int BinaryString::size() const
+{
+    return data.size();
+}
+
+int BinaryString::size()
+{
+    return data.size();
+}
+
+int BinaryString::concat_capacity() const
+{
+    return data.capacity();
+}
+
+char BinaryString::at(size_t index) const
+{
+    return data.at(index) ? '1' : '0';
+}
+
+std::string BinaryString::str() const
+{
+    std::string str;
+    str.reserve(data.size());
+    for(bool b : data)
+        str += (b ? '1' : '0');
+    return str;
+}

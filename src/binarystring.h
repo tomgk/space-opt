@@ -10,33 +10,11 @@ class BinaryString
     std::vector<bool> data;
 public:
     BinaryString(const char *str);
-    int size() const
-    {
-        return data.size();
-    }
-    int size()
-    {
-        return data.size();
-    }
-
-    int concat_capacity() const
-    {
-        return data.capacity();
-    }
-
-    char at(size_t index) const
-    {
-        return data.at(index) ? '1' : '0';
-    }
-
-    std::string str() const
-    {
-        std::string str;
-        str.reserve(data.size());
-        for(bool b : data)
-            str += (b ? '1' : '0');
-        return str;
-    }
+    int size() const;
+    int size();
+    int concat_capacity() const;
+    char at(size_t index) const;
+    std::string str() const;
 };
 
 inline std::ostream& operator<<(std::ostream &out, const BinaryString &str)
