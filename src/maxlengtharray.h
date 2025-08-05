@@ -6,13 +6,28 @@
 template<typename T, size_t maxsize>
 class MaxLengthArray
 {
-    T m_data[maxsize];
+    static constexpr size_t ENTRY_SIZE = sizeof(T);
+    char m_rdata[ENTRY_SIZE + maxsize];
     size_t m_size;
 public:
     MaxLengthArray():
         m_size(0){}
 
 private:
+    void* rentry(size_t index)
+    {
+        return m_rdata + ENTRY_SIZE * index;
+    }
+
+    const T* entry(size_t index) const
+    {
+        return reinterpret_cast<T*>(const_cast<MaxLengthArray*>(this)->rentry(index));
+    }
+
+    T* entry(size_t index)
+    {
+        return reinterpret_cast<T*>(rentry(index));
+    }
 
     [[noreturn]] void outofmemory(size_t required)
     {
@@ -34,7 +49,7 @@ public:
         if(m_size == maxsize)
             outofmemory(m_size+1);
 
-        m_data[m_size] = val;
+        new(rentry(m_size))T(val);
         ++m_size;
     }
 
@@ -58,7 +73,7 @@ public:
         if(index >= m_size)
             throw std::out_of_range("out of bounds");
 
-        return m_data[index];
+        return *entry(index);
     }
 
     const T &at(size_t index) const
@@ -66,17 +81,23 @@ public:
         if(index >= m_size)
             throw std::out_of_range("out of bounds");
 
-        return m_data[index];
+        return *entry(index);
     }
 
     T &back()
     {
-        return m_data[m_size-1];
+        return *entry(m_size-1);
     }
 
     const T &back() const
     {
-        return m_data[m_size-1];
+        return *entry(m_size-1);
+    }
+
+    ~MaxLengthArray()
+    {
+        for(size_t i = 0; i < m_size; ++i)
+            entry(i)->~T();
     }
 };
 
