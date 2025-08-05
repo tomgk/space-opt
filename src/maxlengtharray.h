@@ -14,22 +14,25 @@ public:
 
 private:
 
-    [[noreturn]] void outofmemory()
+    [[noreturn]] void outofmemory(size_t required)
     {
-        throw std::invalid_argument("out of memory");
+        throw std::invalid_argument(
+            "out of memory, "
+            "max="+std::to_string(maxsize)+", "
+            "required "+std::to_string(required));
     }
 
 public:
     void reserve(size_t cap)
     {
         if(cap > maxsize)
-            outofmemory();
+            outofmemory(cap);
     }
 
     void push_back(T val)
     {
         if(m_size == maxsize)
-            outofmemory();
+            outofmemory(m_size+1);
 
         m_data[m_size] = val;
         ++m_size;
