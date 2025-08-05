@@ -121,6 +121,8 @@ void testFixLenFloat(const char *str)
 void FixLengthFloatDecimalTest()
 {
     testFixLenFloat<1>("1");
+    testFixLenFloat<10>("123");
+    testFixLenFloat<10>("123.456");
 }
 
 void testBinary(const char *str)
