@@ -60,6 +60,12 @@ std::string BinaryString::str() const
     return str;
 }
 
+BinaryString &BinaryString::operator+=(char c)
+{
+    data.push_back(toBool(c));
+    return *this;
+}
+
 void BinaryString::write(std::ostream &out) const
 {
     for(bool b : data)
