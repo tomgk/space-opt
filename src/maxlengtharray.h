@@ -49,6 +49,8 @@ public:
         if(m_size == maxsize)
             outofmemory(m_size+1);
 
+        //TODO: if constructor throws exception,
+        //is this code enough since m_size wont get increased?
         new(rentry(m_size))T(val);
         ++m_size;
     }
