@@ -4,6 +4,8 @@
 
 #include "floatstring.h"
 
+#include "integerstring.h"
+
 #include "separatortest.h"
 
 #include "numberstring_test.h"

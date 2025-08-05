@@ -1,7 +1,8 @@
 #ifndef FLOATSTRING_H
 #define FLOATSTRING_H
 
-#include "integerstring.h"
+#include "nibblestring.h"
+#include "digitcharset.h"
 
 #include<numeric>
 #include<stdexcept>
