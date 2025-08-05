@@ -49,3 +49,9 @@ std::string BinaryString::str() const
         str += (b ? '1' : '0');
     return str;
 }
+
+void BinaryString::write(std::ostream &out) const
+{
+    for(bool b : data)
+        out.put(b ? '1' : '0');
+}

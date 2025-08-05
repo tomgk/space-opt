@@ -15,12 +15,17 @@ public:
     int concat_capacity() const;
     char at(size_t index) const;
     std::string str() const;
+
+private:
+    void write(std::ostream &out) const;
+
+public:
+    friend inline std::ostream& operator<<(std::ostream &out, const BinaryString &str)
+    {
+        str.write(out);
+        return out;
+    }
 };
 
-inline std::ostream& operator<<(std::ostream &out, const BinaryString &str)
-{
-    out << str.str();
-    return out;
-}
 
 #endif // BINARYSTRING_H
