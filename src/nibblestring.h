@@ -124,6 +124,27 @@ public:
         return *this;
     }
 
+    NibbleString& operator+=(const NibbleString &str)
+    {
+        //if the last byte is full, anything can just be appended
+        if(!m_unevenCount)
+        {
+            m_values.insert(m_values.end(), str.m_values.begin(), str.m_values.end());
+            //uneven count has to be taken over,
+            //since the appended string now creates the new end
+            m_unevenCount = str.m_unevenCount;
+        }
+        else
+        {
+            //TODO: not just use loop with at()
+            reserve(size() + str.size());
+            for(size_t i=0;i<str.size();++i)
+                (*this) += str.at(i);
+        }
+
+        return *this;
+    }
+
     void reserve(size_t size)
     {
         //reserve the number of bytes needed for that many nibbles
