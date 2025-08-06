@@ -51,6 +51,12 @@ public:
         return m_unevenCount;
     }
 
+    NibbleString():
+        m_unevenCount(false)
+    {
+
+    }
+
     NibbleString(const std::string_view str)
     {
         size_t len = str.size();
