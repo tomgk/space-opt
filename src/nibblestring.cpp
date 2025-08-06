@@ -9,4 +9,5 @@ static void a()
     BinStr a;
     BinStr b;
     a += b;
+    a + b;
 }

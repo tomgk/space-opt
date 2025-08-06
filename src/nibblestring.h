@@ -145,6 +145,13 @@ public:
         return *this;
     }
 
+    NibbleString operator+(const NibbleString &str) const
+    {
+        NibbleString rs(*this);
+        rs += str;
+        return rs;
+    }
+
     void reserve(size_t size)
     {
         //reserve the number of bytes needed for that many nibbles
