@@ -124,6 +124,7 @@ public:
         return *this;
     }
 
+    //TODO: add tests
     NibbleString& operator+=(const NibbleString &str)
     {
         //if the last byte is full, anything can just be appended
@@ -136,7 +137,7 @@ public:
         }
         else
         {
-            //TODO: not just use loop with at()
+            //TODO: use multi byte 4 bit shift
             reserve(size() + str.size());
             for(size_t i=0;i<str.size();++i)
                 (*this) += str.at(i);
@@ -145,6 +146,7 @@ public:
         return *this;
     }
 
+    //TODO: add tests
     NibbleString operator+(const NibbleString &str) const
     {
         NibbleString rs(*this);
@@ -152,6 +154,7 @@ public:
         return rs;
     }
 
+    //TODO: add tests
     NibbleString substr(size_t pos, size_t len) const
     {
         //otherwise a 4 bit shift is needed
