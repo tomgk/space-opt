@@ -152,6 +152,33 @@ public:
         return rs;
     }
 
+    NibbleString substr(size_t pos, size_t len) const
+    {
+        //otherwise a 4 bit shift is needed
+        if(pos % 2 == 0)
+        {
+            size_t index = pos / 2;
+            size_t byteLen = len/2 + len%2; //+1 when unven to add that half byte
+
+            NibbleString str;
+            str.m_values.insert(str.m_values.end(),
+                                m_values.begin()+index,
+                                m_values.begin()+index+byteLen);
+            return str;
+        }
+        else
+        {
+            //TODO: use multi byte 4 bit shift
+            NibbleString str;
+            str.reserve(len);
+
+            for(size_t i=0;i<len;++i)
+                str += at(pos + i);
+
+            return str;
+        }
+    }
+
     void reserve(size_t size)
     {
         //reserve the number of bytes needed for that many nibbles
