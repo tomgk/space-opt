@@ -5,7 +5,7 @@
 #include<string>
 #include<iostream>
 
-template<typename Collection = std::vector<bool>>
+template<typename Collection = std::vector<bool>, char F = '0', char T = '1'>
 class BasicBinaryString
 {
     Collection data;
@@ -13,8 +13,8 @@ class BasicBinaryString
     static bool toBool(char ch);
     static char toChar(bool b);
 
-    static constexpr char FALSE = '0';
-    static constexpr char TRUE = '1';
+    static constexpr char FALSE = F;
+    static constexpr char TRUE = T;
 
 public:
     BasicBinaryString(const char *str);

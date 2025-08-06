@@ -3,8 +3,8 @@
 #include<stdexcept>
 #include<cstring>
 
-template<typename Collection>
-bool BasicBinaryString<Collection>::toBool(char ch)
+template<typename Collection, char F, char T>
+bool BasicBinaryString<Collection, F, T>::toBool(char ch)
 {
     if(ch == FALSE)
         return false;
@@ -15,14 +15,14 @@ bool BasicBinaryString<Collection>::toBool(char ch)
         //throw std::invalid_argument("Invalid value at index "+std::to_string(i)+": "+ch+" - full string is "+str);
 }
 
-template<typename Collection>
-char BasicBinaryString<Collection>::toChar(bool b)
+template<typename Collection, char F, char T>
+char BasicBinaryString<Collection, F, T>::toChar(bool b)
 {
     return b ? TRUE : FALSE;
 }
 
-template<typename Collection>
-BasicBinaryString<Collection>::BasicBinaryString(const char *str)
+template<typename Collection, char F, char T>
+BasicBinaryString<Collection, F, T>::BasicBinaryString(const char *str)
 {
     size_t size = strlen(str);
     for(size_t i = 0; i < size; ++i)
@@ -34,32 +34,32 @@ BasicBinaryString<Collection>::BasicBinaryString(const char *str)
     }
 }
 
-template<typename Collection>
-int BasicBinaryString<Collection>::size() const
+template<typename Collection, char F, char T>
+int BasicBinaryString<Collection, F, T>::size() const
 {
     return data.size();
 }
 
-template<typename Collection>
-int BasicBinaryString<Collection>::size()
+template<typename Collection, char F, char T>
+int BasicBinaryString<Collection, F, T>::size()
 {
     return data.size();
 }
 
-template<typename Collection>
-int BasicBinaryString<Collection>::concat_capacity() const
+template<typename Collection, char F, char T>
+int BasicBinaryString<Collection, F, T>::concat_capacity() const
 {
     return data.capacity();
 }
 
-template<typename Collection>
-char BasicBinaryString<Collection>::at(size_t index) const
+template<typename Collection, char F, char T>
+char BasicBinaryString<Collection, F, T>::at(size_t index) const
 {
     return toChar(data.at(index));
 }
 
-template<typename Collection>
-std::string BasicBinaryString<Collection>::str() const
+template<typename Collection, char F, char T>
+std::string BasicBinaryString<Collection, F, T>::str() const
 {
     std::string str;
     str.reserve(data.size());
@@ -68,15 +68,15 @@ std::string BasicBinaryString<Collection>::str() const
     return str;
 }
 
-template<typename Collection>
-BasicBinaryString<Collection> &BasicBinaryString<Collection>::operator+=(char c)
+template<typename Collection, char F, char T>
+BasicBinaryString<Collection, F, T> &BasicBinaryString<Collection, F, T>::operator+=(char c)
 {
     data.push_back(toBool(c));
     return *this;
 }
 
-template<typename Collection>
-void BasicBinaryString<Collection>::write(std::ostream &out) const
+template<typename Collection, char F, char T>
+void BasicBinaryString<Collection, F, T>::write(std::ostream &out) const
 {
     for(bool b : data)
         out.put(toChar(b));
