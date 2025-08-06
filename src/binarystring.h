@@ -12,6 +12,10 @@ class BasicBinaryString
 
     static bool toBool(char ch);
     static char toChar(bool b);
+
+    static constexpr char FALSE = '0';
+    static constexpr char TRUE = '1';
+
 public:
     BasicBinaryString(const char *str);
     int size() const;

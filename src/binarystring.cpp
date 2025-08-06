@@ -6,9 +6,9 @@
 template<typename Collection>
 bool BasicBinaryString<Collection>::toBool(char ch)
 {
-    if(ch == '0')
+    if(ch == FALSE)
         return false;
-    else if(ch == '1')
+    else if(ch == TRUE)
         return true;
     else
         throw std::invalid_argument("Invalid value: "+std::string(1, ch));
@@ -18,7 +18,7 @@ bool BasicBinaryString<Collection>::toBool(char ch)
 template<typename Collection>
 char BasicBinaryString<Collection>::toChar(bool b)
 {
-    return b ? '1' : '0';
+    return b ? TRUE : FALSE;
 }
 
 template<typename Collection>
