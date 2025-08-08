@@ -31,5 +31,5 @@ int main()
     IntegerNibbleStringAdd();
     FloatNibbleStringAdd();
 
-    std::cout << "SUCESS" << std::endl;
+    std::cout << "SUCCESS" << std::endl;
 }
